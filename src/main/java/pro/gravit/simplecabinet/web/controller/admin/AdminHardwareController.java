@@ -12,6 +12,7 @@ import pro.gravit.simplecabinet.web.service.HardwareIdService;
 import java.util.Base64;
 
 @RestController
+@CrossOrigin()
 @RequestMapping("/admin/hardware")
 public class AdminHardwareController {
     @Autowired

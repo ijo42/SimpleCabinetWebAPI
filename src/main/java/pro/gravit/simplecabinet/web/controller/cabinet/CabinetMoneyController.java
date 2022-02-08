@@ -17,6 +17,7 @@ import pro.gravit.simplecabinet.web.service.UserService;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin()
 @RequestMapping("/cabinet/money")
 public class CabinetMoneyController {
     @Autowired

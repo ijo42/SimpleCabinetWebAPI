@@ -15,6 +15,7 @@ import pro.gravit.simplecabinet.web.service.NewsService;
 import pro.gravit.simplecabinet.web.service.UserService;
 
 @RestController
+@CrossOrigin()
 @RequestMapping("/news")
 public class NewsController {
     @Autowired

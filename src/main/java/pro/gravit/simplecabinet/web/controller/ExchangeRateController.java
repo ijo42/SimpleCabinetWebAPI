@@ -11,6 +11,7 @@ import pro.gravit.simplecabinet.web.service.BalanceService;
 import pro.gravit.simplecabinet.web.service.ExchangeRateService;
 
 @RestController
+@CrossOrigin()
 @RequestMapping("/exchangerate")
 public class ExchangeRateController {
     @Autowired

@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 @RestController
+@CrossOrigin()
 @RequestMapping("/cabinet")
 public class CabinetController {
     @Autowired

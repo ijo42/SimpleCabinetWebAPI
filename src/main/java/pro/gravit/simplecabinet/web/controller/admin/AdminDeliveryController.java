@@ -11,6 +11,7 @@ import pro.gravit.simplecabinet.web.service.UserService;
 import pro.gravit.simplecabinet.web.service.shop.ItemDeliveryService;
 
 @RestController
+@CrossOrigin()
 @RequestMapping("/admin/delivery")
 public class AdminDeliveryController {
     @Autowired

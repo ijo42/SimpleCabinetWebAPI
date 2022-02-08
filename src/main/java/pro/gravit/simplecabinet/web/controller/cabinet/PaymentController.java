@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 @RestController
+@CrossOrigin()
 @RequestMapping("/cabinet/payment")
 public class PaymentController {
     @Autowired

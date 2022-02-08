@@ -2,16 +2,14 @@ package pro.gravit.simplecabinet.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pro.gravit.simplecabinet.web.dto.BanInfoDto;
 import pro.gravit.simplecabinet.web.dto.PageDto;
 import pro.gravit.simplecabinet.web.exception.EntityNotFoundException;
 import pro.gravit.simplecabinet.web.service.BanService;
 
 @RestController
+@CrossOrigin()
 @RequestMapping("/banlist")
 public class BanlistController {
     @Autowired

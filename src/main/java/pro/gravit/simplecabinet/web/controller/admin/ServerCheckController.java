@@ -2,10 +2,7 @@ package pro.gravit.simplecabinet.web.controller.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pro.gravit.simplecabinet.web.configuration.jwt.JwtProvider;
 import pro.gravit.simplecabinet.web.dto.UserDto;
 import pro.gravit.simplecabinet.web.exception.InvalidParametersException;
@@ -14,6 +11,7 @@ import pro.gravit.simplecabinet.web.service.SessionService;
 import pro.gravit.simplecabinet.web.service.UserService;
 
 @RestController
+@CrossOrigin()
 @RequestMapping("/admin/server")
 public class ServerCheckController {
     @Autowired

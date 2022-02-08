@@ -16,6 +16,7 @@ import pro.gravit.simplecabinet.web.service.shop.GroupProductService;
 import java.time.LocalDateTime;
 
 @RestController
+@CrossOrigin()
 @RequestMapping("/shop/group/")
 public class GroupShopController {
     @Autowired
