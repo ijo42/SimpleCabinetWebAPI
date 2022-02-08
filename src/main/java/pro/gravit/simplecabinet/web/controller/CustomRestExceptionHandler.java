@@ -2,10 +2,13 @@ package pro.gravit.simplecabinet.web.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import pro.gravit.simplecabinet.web.exception.AbstractCabinetException;
 import pro.gravit.simplecabinet.web.exception.EntityNotFoundException;
+
+import java.util.Objects;
 
 @ControllerAdvice
 public class CustomRestExceptionHandler {
@@ -25,6 +28,20 @@ public class CustomRestExceptionHandler {
     public ResponseEntity<ApiError> handleSecurityException(SecurityException e) {
         ApiError error = new ApiError(498, e.getMessage());
         return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity<Object> handleHttpRequestMethodNotSupported(
+            HttpRequestMethodNotSupportedException ex) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(ex.getMethod());
+        builder.append(
+                " method is not supported for this request. Supported methods are ");
+        Objects.requireNonNull(ex.getSupportedHttpMethods()).forEach(t -> builder.append(t).append(" "));
+
+        ApiError apiError = new ApiError(HttpStatus.METHOD_NOT_ALLOWED.ordinal(),
+                ex.getLocalizedMessage() + builder);
+        return new ResponseEntity<>(apiError, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(Exception.class)
