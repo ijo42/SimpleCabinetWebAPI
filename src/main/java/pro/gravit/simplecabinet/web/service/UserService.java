@@ -63,6 +63,9 @@ public class UserService {
         if (!USERNAME_PATTERN.matcher(username).matches()) {
             throw new InvalidParametersException("Username contains forbidden characters", 33);
         }
+        if (!User.isCorrectEmail(email)) {
+            throw new InvalidParametersException("Email not in correct format", 34);
+        }
         User user = new User();
         user.setUsername(username);
         user.setUuid(UUID.randomUUID());
