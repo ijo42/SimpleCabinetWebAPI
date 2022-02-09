@@ -39,6 +39,10 @@ public class UserService {
         return repository.findByUsername(username);
     }
 
+    public Optional<User> findByUsernameOrEmail(String username, String email) {
+        return repository.findByUsernameIgnoreCaseOrEmailIgnoreCaseAllIgnoreCase(username, email);
+    }
+
     public Optional<User> findByUUID(UUID uuid) {
         return repository.findByUuid(uuid);
     }

@@ -8,6 +8,7 @@ import pro.gravit.simplecabinet.web.configuration.jwt.JwtProvider;
 import pro.gravit.simplecabinet.web.dto.UserDto;
 import pro.gravit.simplecabinet.web.exception.AuthException;
 import pro.gravit.simplecabinet.web.exception.EntityNotFoundException;
+import pro.gravit.simplecabinet.web.exception.RegisterException;
 import pro.gravit.simplecabinet.web.model.User;
 import pro.gravit.simplecabinet.web.service.DtoService;
 import pro.gravit.simplecabinet.web.service.PasswordCheckService;
@@ -32,6 +33,10 @@ public class AuthController {
 
     @PostMapping("/register")
     public RegisterResponse register(@RequestBody RegisterRequest request) {
+        var optional = userService.findByUsernameOrEmail(request.username, request.email);
+        if (optional.isPresent()) {
+            throw new RegisterException("User already registered", 3);
+        }
         User user = userService.register(request.username, request.email, request.password);
         return new RegisterResponse(user.getId());
     }
