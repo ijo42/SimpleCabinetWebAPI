@@ -24,10 +24,13 @@ public class KeyManagementConfig {
     @Value("${keymanagement.save}")
     private boolean isSaveKeys;
 
+    @Value("${keymanagement.path}")
+    private Path keysLocation;
+
     @Bean
     public KeyManagementService getKeyManagementService() throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, IOException, InvalidKeySpecException {
-        Path publicKey = Paths.get("ecdsa.pub");
-        Path privateKey = Paths.get("ecdsa");
+        Path publicKey = keysLocation.resolve("ecdsa.pub");
+        Path privateKey = keysLocation.resolve("ecdsa");
         if (isSaveKeys && Files.exists(privateKey) && Files.exists(publicKey)) {
             var factory = KeyFactory.getInstance("EC");
             ECPrivateKey priv = (ECPrivateKey) factory.generatePrivate(new PKCS8EncodedKeySpec(Files.readAllBytes(privateKey)));
