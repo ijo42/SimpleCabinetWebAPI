@@ -9,7 +9,6 @@ import pro.gravit.simplecabinet.web.service.BanService;
 import pro.gravit.simplecabinet.web.service.UserService;
 
 @RestController
-@CrossOrigin()
 @RequestMapping("/admin/moderation")
 public class AdminModerationController {
     @Autowired

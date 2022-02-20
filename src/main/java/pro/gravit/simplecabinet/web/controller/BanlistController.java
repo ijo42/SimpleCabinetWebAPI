@@ -9,7 +9,6 @@ import pro.gravit.simplecabinet.web.exception.EntityNotFoundException;
 import pro.gravit.simplecabinet.web.service.BanService;
 
 @RestController
-@CrossOrigin()
 @RequestMapping("/banlist")
 public class BanlistController {
     @Autowired

@@ -17,7 +17,6 @@ import pro.gravit.simplecabinet.web.service.UserService;
 import pro.gravit.simplecabinet.web.utils.SecurityUtils;
 
 @RestController
-@CrossOrigin()
 @RequestMapping("/auth")
 public class AuthController {
     @Autowired

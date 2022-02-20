@@ -11,7 +11,6 @@ import pro.gravit.simplecabinet.web.service.KeyManagementService;
 import java.util.Base64;
 
 @RestController
-@CrossOrigin()
 @RequestMapping("/status")
 public class StatusController {
     @Autowired

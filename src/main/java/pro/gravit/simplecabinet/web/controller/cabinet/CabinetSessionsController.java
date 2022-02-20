@@ -10,7 +10,6 @@ import pro.gravit.simplecabinet.web.service.SessionService;
 import pro.gravit.simplecabinet.web.service.UserService;
 
 @RestController
-@CrossOrigin()
 @RequestMapping("/cabinet/sessions")
 public class CabinetSessionsController {
     @Autowired

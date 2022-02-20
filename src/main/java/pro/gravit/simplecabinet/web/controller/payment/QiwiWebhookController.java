@@ -8,7 +8,6 @@ import pro.gravit.simplecabinet.web.service.payment.QiwiPaymentService;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@CrossOrigin()
 @RequestMapping("/webhooks/qiwi")
 public class QiwiWebhookController {
     @Autowired

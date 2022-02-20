@@ -14,7 +14,6 @@ import pro.gravit.simplecabinet.web.service.UserService;
 import pro.gravit.simplecabinet.web.service.shop.ItemProductService;
 
 @RestController
-@CrossOrigin()
 @RequestMapping("/shop/item/")
 public class ItemShopController {
     @Autowired

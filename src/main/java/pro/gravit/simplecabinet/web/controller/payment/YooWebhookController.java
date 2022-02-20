@@ -8,7 +8,6 @@ import pro.gravit.simplecabinet.web.service.payment.YooPaymentService;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@CrossOrigin()
 @RequestMapping("/webhooks/yoo")
 public class YooWebhookController {
     @Autowired

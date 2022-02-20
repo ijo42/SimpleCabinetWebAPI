@@ -8,7 +8,6 @@ import pro.gravit.simplecabinet.web.service.PasswordCheckService;
 import pro.gravit.simplecabinet.web.service.UserService;
 
 @RestController
-@CrossOrigin()
 @RequestMapping("/cabinet/security")
 public class CabinetSecurityController {
     @Autowired

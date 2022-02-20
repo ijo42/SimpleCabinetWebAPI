@@ -9,7 +9,6 @@ import pro.gravit.simplecabinet.web.exception.EntityNotFoundException;
 import pro.gravit.simplecabinet.web.service.AuditService;
 
 @RestController
-@CrossOrigin()
 @RequestMapping("/admin/audit")
 public class AuditController {
     @Autowired

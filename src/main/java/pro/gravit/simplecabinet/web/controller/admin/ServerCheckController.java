@@ -11,7 +11,6 @@ import pro.gravit.simplecabinet.web.service.SessionService;
 import pro.gravit.simplecabinet.web.service.UserService;
 
 @RestController
-@CrossOrigin()
 @RequestMapping("/admin/server")
 public class ServerCheckController {
     @Autowired

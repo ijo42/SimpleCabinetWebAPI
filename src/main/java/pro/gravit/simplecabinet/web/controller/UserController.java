@@ -13,7 +13,6 @@ import pro.gravit.simplecabinet.web.service.UserService;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin()
 @RequestMapping("/users")
 public class
 UserController {
