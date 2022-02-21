@@ -2,9 +2,12 @@ package pro.gravit.simplecabinet.web.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MissingRequestValueException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.multipart.MultipartException;
 import pro.gravit.simplecabinet.web.exception.AbstractCabinetException;
 import pro.gravit.simplecabinet.web.exception.EntityNotFoundException;
 
@@ -24,10 +27,32 @@ public class CustomRestExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<ApiError> handleSecurityException(AccessDeniedException e) {
+        ApiError error = new ApiError(499, e.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
+    }
+
     @ExceptionHandler(SecurityException.class)
     public ResponseEntity<ApiError> handleSecurityException(SecurityException e) {
         ApiError error = new ApiError(498, e.getMessage());
         return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(MissingRequestValueException.class)
+    public ResponseEntity<ApiError> handleMissingRequestValueException(MissingRequestValueException e) {
+        ApiError error = new ApiError(497, e.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MultipartException.class)
+    public ResponseEntity<ApiError> handleMultipartException(MultipartException e) {
+        String message = e.getMessage();
+        if (message != null){
+            message = message.substring(0, message.indexOf(";")); // strip redundant information
+        }
+        ApiError error = new ApiError(497, message);
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
